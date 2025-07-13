@@ -1,0 +1,9 @@
+.save-button {
+  background-color: grey;
+  opacity: 70%;
+  color: black;
+  padding: 5px 5px 5px 5px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 8px;
+  font-size: small;
+}

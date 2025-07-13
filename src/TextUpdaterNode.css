@@ -1,0 +1,17 @@
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+.title{
+  color:#f425b2
+}
+.label {
+  background-color: rgba(245, 147, 212, 0.486);
+  color: #8b1666;
+
+  /* box-shadow: -0.5px 0.5px 10px rgba(220, 53, 167, 0.6); */
+}
+.label:hover {
+  background-color: grey;
+  opacity: 50%;
+  color: white;
+}
