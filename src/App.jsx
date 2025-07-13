@@ -66,7 +66,6 @@ const App = () => {
       var canSave = nodes.every(function (node) {
         let id = Number(node.id);
 
-       
         if (totalIncomingEdges(id) <= 0) {
           count++;
           if (count > 1) {
@@ -78,16 +77,18 @@ const App = () => {
         }
         return true;
       });
+      if (canSave) {
+        localStorage.setItem("nodes", JSON.stringify(nodes));
+        localStorage.setItem("edges", JSON.stringify(edges));
+        notifySuccess();
+      } else {
+        notify();
+      }
     } else {
-      localStorage.setItem("nodes", JSON.stringify(nodes));
-      localStorage.setItem("edges", JSON.stringify(edges));
-    }
-    if (canSave) {
       localStorage.setItem("nodes", JSON.stringify(nodes));
       localStorage.setItem("edges", JSON.stringify(edges));
       notifySuccess();
-    } else {
-      notify();
+      return;
     }
   }, [reactFlow, nodes, edges]);
 
@@ -176,15 +177,12 @@ const App = () => {
 
   const { updateNode } = useReactFlow();
   const updateNodeLabel = (evt) => {
-    console.log(id); 
+    console.log(id);
 
-    updateNode(
-      id, 
-      (node) => ({
-        selected: true,
-        data: { ...node.data, label: evt.target.value },
-      })
-    );
+    updateNode(id, (node) => ({
+      selected: true,
+      data: { ...node.data, label: evt.target.value },
+    }));
   };
   const handlePanelClose = () => {
     setToggle(!toggle);
